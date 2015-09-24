@@ -21,7 +21,6 @@ object Form1: TForm1
     Height = 299
     Align = alClient
     OnClick = screenImageClick
-    OnDblClick = screenImageDblClick
     ExplicitLeft = 392
     ExplicitTop = 88
     ExplicitWidth = 105
@@ -36,10 +35,10 @@ object Form1: TForm1
     Left = 56
     Top = 32
   end
-  object sendDataTimer: TTimer
+  object send: TTimer
     Enabled = False
     Interval = 500
-    OnTimer = sendDataTimerTimer
+    OnTimer = sendTimer
     Left = 224
     Top = 104
   end

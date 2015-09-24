@@ -70,9 +70,9 @@ canvasDesktop:=TCanvas.Create;
         bitMapDesktop.Width:=Screen.Width;
         bitMapDesktop.Height:=Screen.Height;
         bitMapDesktop.Canvas.CopyRect(bitMapDesktop.Canvas.ClipRect, canvasDesktop, canvasDesktop.ClipRect);
-        {if not DrawIcon(bitMapDesktop.Canvas.Handle, Mouse.CursorPos.X, Mouse.CursorPos.Y, GetCursor) then
+        if not DrawIcon(bitMapDesktop.Canvas.Handle, Mouse.CursorPos.X, Mouse.CursorPos.Y, GetCursor) then
           begin
-        end;} // отображение курсора у клиента
+        end;
         jpgimg:=TJPEGImage.Create;
         jpgimg.Assign(bitMapDesktop);
         jpgImg.CompressionQuality:=compressImage;
@@ -117,10 +117,9 @@ i := pos('_', fullReadString);
     sLeftCoord := copy(fullReadString, 4, i-4);
     sRigthCoord := copy(fullReadString, i + 1, Length(fullReadString) - i);
     SetCursorPos(StrToInt(sLeftCoord), StrToInt(sRigthCoord));
+    //mainForm.caption:= sLeftCoord+'_'+sLeftCoord;
+    ShowMessage(sLeftCoord+'_'+sRigthCoord);
     mouse_event(MOUSEEVENTF_LEFTDOWN,StrToInt(sLeftCoord),StrToInt(sRigthCoord),0,0);
-    mouse_event(MOUSEEVENTF_LEFTUP,StrToInt(sLeftCoord),StrToInt(sRigthCoord),0,0);
-    mouse_event(MOUSEEVENTF_LEFTDOWN,StrToInt(sLeftCoord),StrToInt(sRigthCoord),0,0);
-    mouse_event(MOUSEEVENTF_LEFTUP,StrToInt(sLeftCoord),StrToInt(sRigthCoord),0,0);
   end;
 end;
 end;

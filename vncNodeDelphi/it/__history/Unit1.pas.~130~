@@ -53,10 +53,12 @@ end;
 
 procedure TForm1.screenImageDblClick(Sender: TObject);
 var
+//mouseEvents: TMouse;
 pointCur: TPoint;
 begin
 GetCursorPos(pointCur);
 pointCur := Form1.ScreenToClient(pointCur);
+Form1.Caption:=IntToStr(pointCur.X)+'x'+IntToStr(pointCur.Y);
 //mouseEvents:=TMouse.Create;
 tcpClient.Socket.WriteLn(mouseClick+'1000000001,'+inttostr(pointCur.X)+'_'+inttostr(pointCur.Y));
 end;
@@ -73,6 +75,7 @@ begin
 //относительно формы
 GetCursorPos(pointCur);
 pointCur := Form1.ScreenToClient(pointCur);
+Form1.Caption:=IntToStr(pointCur.X)+'x'+IntToStr(pointCur.Y);
 //****************************
  //mouseEvents:=TMouse.Create;
  //tcpClient.Socket.WriteLn(coordMouse+'1000000001,'+inttostr(mouseEvents.CursorPos.x)+'_'+inttostr(mouseEvents.CursorPos.y));

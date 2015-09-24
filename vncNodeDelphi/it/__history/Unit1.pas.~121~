@@ -53,19 +53,17 @@ end;
 
 procedure TForm1.screenImageDblClick(Sender: TObject);
 var
-pointCur: TPoint;
+mouseEvents: TMouse;
 begin
-GetCursorPos(pointCur);
-pointCur := Form1.ScreenToClient(pointCur);
-//mouseEvents:=TMouse.Create;
-tcpClient.Socket.WriteLn(mouseClick+'1000000001,'+inttostr(pointCur.X)+'_'+inttostr(pointCur.Y));
+mouseEvents:=TMouse.Create;
+tcpClient.Socket.WriteLn(mouseClick+'1000000001,'+inttostr(mouseEvents.CursorPos.x)+'_'+inttostr(mouseEvents.CursorPos.y));
 end;
 
 procedure TForm1.sendDataTimerTimer(Sender: TObject);
 var
   streamJpg: TMemoryStream;
   jpegImage: TJPEGImage;
-  //mouseEvents: TMouse;
+  mouseEvents: TMouse;
   pointCur: TPoint;
 begin
 if tcpClient.Connected=true then
@@ -73,10 +71,10 @@ begin
 //относительно формы
 GetCursorPos(pointCur);
 pointCur := Form1.ScreenToClient(pointCur);
+Form1.Caption:=(IntToStr(pointCur.X)+'x'+IntToStr(pointCur.Y));
 //****************************
- //mouseEvents:=TMouse.Create;
- //tcpClient.Socket.WriteLn(coordMouse+'1000000001,'+inttostr(mouseEvents.CursorPos.x)+'_'+inttostr(mouseEvents.CursorPos.y));
- tcpClient.Socket.WriteLn(coordMouse+'1000000001,'+inttostr(pointCur.X)+'_'+inttostr(pointCur.Y));
+ mouseEvents:=TMouse.Create;
+ tcpClient.Socket.WriteLn(coordMouse+'1000000001,'+inttostr(mouseEvents.CursorPos.x)+'_'+inttostr(mouseEvents.CursorPos.y));
  streamJpg:=TMemoryStream.Create;
  tcpClient.Socket.ReadStream(streamJpg);
  streamJpg.Position:=0;

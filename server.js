@@ -19,8 +19,6 @@ var server = net.createServer(function(socket) {
 		dataClientNew = dataClientNew.substring(0, dataClient.length - 1);//********** del
 		var coordMouse = dataClientNew.substr(0,5);//************ del
 		var commandItString = dataClient.split(',');
-		//console.log(commandItString[0]);
-		//console.log(coordMouse);
 // вывод объекта в консоль console.log(JSON.stringify(data, null, 4));
 //jsonDate = JSON.stringify(data, null, 4);
 //console.log(jsonDate);
@@ -40,30 +38,22 @@ var server = net.createServer(function(socket) {
 				} 
 			}
 		}
-		/*else if (commandItString[0] == 'getMouseCoord') {
-			for(i=0; i<clientPeopleSockets.length; i++) {
-				if (clientPeopleSockets[i].socketId == commandItString[1]) {
-					clientPeopleSockets[i].write(clientPeopleSockets[i].mouseCoord+'\n');
-				} 
-			}
-		}*/
 		//test------------------------------------------------
 		else if (commandItString[0] == '102') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
-					//clientPeopleSockets[i].mouseCoord = commandItString[2];
 					clientPeopleSockets[i].write('102'+commandItString[2]+'\n');
 				} 
 			}
 		}
-		/*else if (commandItString[0] == 'getImage') {
-			console.log('dasd');
+		else if (commandItString[0] == '103') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
-				if (clientPeopleSockets[i].socketId == '1000000001') {
-					clientPeopleSockets[i].write(clientPeopleSockets[i].screenImage);	
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('103'+commandItString[2]+'\n');
+					console.log('click');
 				} 
 			}
-		}*/
+		}
 		else {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == '1000000002') {
