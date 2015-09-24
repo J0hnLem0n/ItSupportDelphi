@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015.09.22 15:22:41.292.pas,\\stor0.dagc.ru\profiles\enikolaev\Documents\RAD Studio\Projects\Unit1.pas=D:\UsersProfile\enikolaev\Desktop\vncNode\people\Unit1.pas</Transaction>
+    <Transaction>2015.09.22 15:22:41.313.dfm,\\stor0.dagc.ru\profiles\enikolaev\Documents\RAD Studio\Projects\Unit1.dfm=D:\UsersProfile\enikolaev\Desktop\vncNode\people\Unit1.dfm</Transaction>
+    <Transaction>2015.09.22 15:22:50.199.dproj,\\stor0.dagc.ru\profiles\enikolaev\Documents\RAD Studio\Projects\Project1.dproj=D:\UsersProfile\enikolaev\Desktop\vncNode\people\people.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
