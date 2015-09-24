@@ -10,11 +10,11 @@ uses
 type
   TmainForm = class(TForm)
     tcpClient: TIdTCPClient;
-    timerSendDescImage: TTimer;
-    timerMouseCoord: TTimer;
+    Timer1: TTimer;
+    Timer2: TTimer;
     procedure FormCreate(Sender: TObject);
-    procedure timerSendDescImageTimer(Sender: TObject);
-    procedure timerMouseCoordTimer(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,7 +23,7 @@ type
 
 const
   hello : String = '100,';    //приветствие пипла
-  compressImage : Integer = 75; //качество джипег
+
 var
   mainForm: TmainForm;
   userId:string;
@@ -42,7 +42,7 @@ begin
   mainForm.Text:='Ваш ид: '+userId;
 end;
 
-procedure TmainForm.timerSendDescImageTimer(Sender: TObject);
+procedure TmainForm.Timer1Timer(Sender: TObject);
 var
 {//логирование
 var
@@ -54,13 +54,18 @@ Append(myFile);
 WriteLn(myFile, coordMouse);
 CloseFile(myFile);
 //-----------------------}
-
+fullReadString:string;
+commandServer:string;
+coordMouse: string;
 //-----------------------
 canvasDesktop: TCanvas;
 memoryDesktop:TMemoryStream;
 jpgimg: TJPEGImage;
 bitMapDesktop: TBitmap;
-
+//coord var
+ifCoord:string;
+i:integer;
+sLeftCoord, sRigthCoord:string;
 begin
 
 //-----------------------
@@ -75,7 +80,7 @@ canvasDesktop:=TCanvas.Create;
         end;
         jpgimg:=TJPEGImage.Create;
         jpgimg.Assign(bitMapDesktop);
-        jpgImg.CompressionQuality:=compressImage;
+        jpgImg.CompressionQuality:=50;
         memoryDesktop:=TMemoryStream.Create;
         jpgimg.SaveToStream(memoryDesktop);
         tcpClient.Socket.Write(memoryDesktop, 0, True);
@@ -86,15 +91,7 @@ canvasDesktop:=TCanvas.Create;
 //-----------------------
 end;
 
-procedure TmainForm.timerMouseCoordTimer(Sender: TObject);
-var
-fullReadString:string;
-commandServer:string;
-coordMouse: string;
-//coord var
-ifCoord:string;
-i:integer;
-sLeftCoord, sRigthCoord:string;
+procedure TmainForm.Timer2Timer(Sender: TObject);
 begin
 //in mouse coord
 //tcpClient.Socket.WriteLn('getMouseCoords,'+userId);

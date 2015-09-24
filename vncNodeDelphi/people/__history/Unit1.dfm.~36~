@@ -1,7 +1,7 @@
-object Form1: TForm1
+object mainForm: TmainForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'mainForm'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
@@ -14,32 +14,25 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object screenImage: TImage
-    Left = 0
-    Top = 0
-    Width = 635
-    Height = 299
-    Align = alClient
-    OnClick = screenImageClick
-    ExplicitLeft = 392
-    ExplicitTop = 88
-    ExplicitWidth = 105
-    ExplicitHeight = 105
-  end
   object tcpClient: TIdTCPClient
     ConnectTimeout = 0
     Host = '172.16.0.110'
     IPVersion = Id_IPv4
     Port = 8124
     ReadTimeout = -1
-    Left = 56
-    Top = 32
+    Left = 32
+    Top = 48
   end
   object Timer1: TTimer
-    Enabled = False
     Interval = 500
     OnTimer = Timer1Timer
-    Left = 224
-    Top = 104
+    Left = 288
+    Top = 216
+  end
+  object Timer2: TTimer
+    Interval = 1
+    OnTimer = Timer2Timer
+    Left = 400
+    Top = 184
   end
 end

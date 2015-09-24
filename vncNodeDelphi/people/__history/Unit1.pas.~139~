@@ -10,11 +10,9 @@ uses
 type
   TmainForm = class(TForm)
     tcpClient: TIdTCPClient;
-    timerSendDescImage: TTimer;
-    timerMouseCoord: TTimer;
+    Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
-    procedure timerSendDescImageTimer(Sender: TObject);
-    procedure timerMouseCoordTimer(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,7 +21,7 @@ type
 
 const
   hello : String = '100,';    //приветствие пипла
-  compressImage : Integer = 75; //качество джипег
+
 var
   mainForm: TmainForm;
   userId:string;
@@ -42,7 +40,7 @@ begin
   mainForm.Text:='Ваш ид: '+userId;
 end;
 
-procedure TmainForm.timerSendDescImageTimer(Sender: TObject);
+procedure TmainForm.Timer1Timer(Sender: TObject);
 var
 {//логирование
 var
@@ -54,43 +52,14 @@ Append(myFile);
 WriteLn(myFile, coordMouse);
 CloseFile(myFile);
 //-----------------------}
-
+fullReadString:string;
+commandServer:string;
+coordMouse: string;
 //-----------------------
 canvasDesktop: TCanvas;
 memoryDesktop:TMemoryStream;
 jpgimg: TJPEGImage;
 bitMapDesktop: TBitmap;
-
-begin
-
-//-----------------------
-canvasDesktop:=TCanvas.Create;
-        canvasDesktop.Handle:=GetDC(HWND_DESKTOP);
-        bitMapDesktop:=TBitmap.Create;
-        bitMapDesktop.Width:=Screen.Width;
-        bitMapDesktop.Height:=Screen.Height;
-        bitMapDesktop.Canvas.CopyRect(bitMapDesktop.Canvas.ClipRect, canvasDesktop, canvasDesktop.ClipRect);
-        if not DrawIcon(bitMapDesktop.Canvas.Handle, Mouse.CursorPos.X, Mouse.CursorPos.Y, GetCursor) then
-          begin
-        end;
-        jpgimg:=TJPEGImage.Create;
-        jpgimg.Assign(bitMapDesktop);
-        jpgImg.CompressionQuality:=compressImage;
-        memoryDesktop:=TMemoryStream.Create;
-        jpgimg.SaveToStream(memoryDesktop);
-        tcpClient.Socket.Write(memoryDesktop, 0, True);
-        bitMapDesktop.Free;
-        jpgimg.Free;
-        memoryDesktop.Clear;
-        memoryDesktop.Free;
-//-----------------------
-end;
-
-procedure TmainForm.timerMouseCoordTimer(Sender: TObject);
-var
-fullReadString:string;
-commandServer:string;
-coordMouse: string;
 //coord var
 ifCoord:string;
 i:integer;
@@ -110,6 +79,27 @@ if (commandServer='102') then begin
     mainForm.caption:= sLeftCoord+'_'+sLeftCoord;
   end;
 end;
+//-----------------------
+canvasDesktop:=TCanvas.Create;
+        canvasDesktop.Handle:=GetDC(HWND_DESKTOP);
+        bitMapDesktop:=TBitmap.Create;
+        bitMapDesktop.Width:=Screen.Width;
+        bitMapDesktop.Height:=Screen.Height;
+        bitMapDesktop.Canvas.CopyRect(bitMapDesktop.Canvas.ClipRect, canvasDesktop, canvasDesktop.ClipRect);
+        if not DrawIcon(bitMapDesktop.Canvas.Handle, Mouse.CursorPos.X, Mouse.CursorPos.Y, GetCursor) then
+          begin
+        end;
+        jpgimg:=TJPEGImage.Create;
+        jpgimg.Assign(bitMapDesktop);
+        jpgImg.CompressionQuality:=50;
+        memoryDesktop:=TMemoryStream.Create;
+        jpgimg.SaveToStream(memoryDesktop);
+        tcpClient.Socket.Write(memoryDesktop, 0, True);
+        bitMapDesktop.Free;
+        jpgimg.Free;
+        memoryDesktop.Clear;
+        memoryDesktop.Free;
+//-----------------------
 end;
 
 end.

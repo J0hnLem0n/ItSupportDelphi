@@ -45,7 +45,7 @@ end;
 
 procedure TForm1.screenImageClick(Sender: TObject);
 begin
-Timer1.Enabled:=true;
+  Timer1.Enabled:=true;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);

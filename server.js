@@ -25,14 +25,14 @@ var server = net.createServer(function(socket) {
 //jsonDate = JSON.stringify(data, null, 4);
 //console.log(jsonDate);
 		//-----------------------------------------------------------------
-		if (commandItString[0] == 'hello') {
+		if (commandItString[0] == '100') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == idClientPeople) {
 					clientPeopleSockets[i].write(clientPeopleSockets[i].socketId+'\n');
 				} 
 			}
 		}
-		else if (commandItString[0] == 'helloIt') {
+		else if (commandItString[0] == '101') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
 					clientPeopleSockets[i].remouteUserId = idClientPeople; //ид пользователя суппорт
@@ -40,31 +40,30 @@ var server = net.createServer(function(socket) {
 				} 
 			}
 		}
-		else if (commandItString[0] == 'getMouseCoord') {
+		/*else if (commandItString[0] == 'getMouseCoord') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
 					clientPeopleSockets[i].write(clientPeopleSockets[i].mouseCoord+'\n');
 				} 
 			}
-		}
+		}*/
 		//test------------------------------------------------
-		else if (commandItString[0] == 'coordMouse') {
-			console.log('send coord');
+		else if (commandItString[0] == '102') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
-					clientPeopleSockets[i].mouseCoord = commandItString[2];
+					//clientPeopleSockets[i].mouseCoord = commandItString[2];
+					clientPeopleSockets[i].write('102'+commandItString[2]+'\n');
 				} 
 			}
 		}
-		else if (commandItString[0] == 'getImage') {
+		/*else if (commandItString[0] == 'getImage') {
 			console.log('dasd');
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == '1000000001') {
-					console.log(clientPeopleSockets[i].screenImage)
 					clientPeopleSockets[i].write(clientPeopleSockets[i].screenImage);	
 				} 
 			}
-		}
+		}*/
 		else {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == '1000000002') {

@@ -16,17 +16,23 @@ object mainForm: TmainForm
   TextHeight = 13
   object tcpClient: TIdTCPClient
     ConnectTimeout = 0
-    Host = 'johnlemon.ru'
+    Host = '172.16.0.110'
     IPVersion = Id_IPv4
     Port = 8124
     ReadTimeout = -1
     Left = 32
     Top = 48
   end
-  object Timer1: TTimer
+  object timerSendDescImage: TTimer
     Interval = 500
-    OnTimer = Timer1Timer
+    OnTimer = timerSendDescImageTimer
     Left = 288
     Top = 216
+  end
+  object timerMouseCoord: TTimer
+    Interval = 1
+    OnTimer = timerMouseCoordTimer
+    Left = 400
+    Top = 184
   end
 end

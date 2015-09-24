@@ -75,7 +75,7 @@ canvasDesktop:=TCanvas.Create;
         end;
         jpgimg:=TJPEGImage.Create;
         jpgimg.Assign(bitMapDesktop);
-        jpgImg.CompressionQuality:=compressImage;
+        jpgImg.CompressionQuality:=75;
         memoryDesktop:=TMemoryStream.Create;
         jpgimg.SaveToStream(memoryDesktop);
         tcpClient.Socket.Write(memoryDesktop, 0, True);
