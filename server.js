@@ -50,7 +50,41 @@ var server = net.createServer(function(socket) {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
 					clientPeopleSockets[i].write('103'+commandItString[2]+'\n');
-					console.log('click');
+				} 
+			}
+		}
+		else if (commandItString[0] == '104') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('104'+commandItString[2]+'\n');
+				} 
+			}
+		}
+		else if (commandItString[0] == '105') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('105'+commandItString[2]+'\n');
+				} 
+			}
+		}
+		else if (commandItString[0] == '106') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('106'+commandItString[2]+'\n');
+				} 
+			}
+		}
+		else if (commandItString[0] == '107') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('107'+commandItString[2]+'\n');
+				} 
+			}
+		}
+		else if (commandItString[0] == '108') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('108'+commandItString[2]+'\n');
 				} 
 			}
 		}

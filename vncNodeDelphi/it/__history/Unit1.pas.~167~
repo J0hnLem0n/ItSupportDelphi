@@ -58,7 +58,7 @@ end;
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-tcpClient.Socket.WriteLn(keyBoardPress+'1000000001,'+IntToStr(Key));
+tcpClient.Socket.WriteLn(keyBoardPress+'1000000001,'+Key);
 end;
 
 procedure TForm1.screenImageClick(Sender: TObject);

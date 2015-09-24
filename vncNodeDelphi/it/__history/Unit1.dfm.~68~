@@ -12,7 +12,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object screenImage: TImage
@@ -40,6 +39,7 @@ object Form1: TForm1
     Top = 32
   end
   object sendDataTimer: TTimer
+    Enabled = False
     Interval = 500
     OnTimer = sendDataTimerTimer
     Left = 224

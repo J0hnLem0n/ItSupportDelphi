@@ -165,7 +165,7 @@ end;
 if (commandServer='108') then begin
   i:=Length(fullReadString);
   sLeftCoord := copy(fullReadString, 4, i-3);
-  keybd_event(Ord(StrToInt(sLeftCoord)), 0, 0, 0);
+  keybd_event(Ord(sLeftCoord), 0, 0, 0);
   //ShowMessage(sLeftCoord);
 end;
 end;

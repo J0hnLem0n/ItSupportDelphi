@@ -2,8 +2,8 @@ object mainForm: TmainForm
   Left = 0
   Top = 0
   Caption = 'mainForm'
-  ClientHeight = 46
-  ClientWidth = 124
+  ClientHeight = 299
+  ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,15 +20,19 @@ object mainForm: TmainForm
     IPVersion = Id_IPv4
     Port = 8124
     ReadTimeout = -1
+    Left = 32
+    Top = 48
   end
   object timerSendDescImage: TTimer
     Interval = 500
     OnTimer = timerSendDescImageTimer
-    Left = 32
+    Left = 288
+    Top = 216
   end
   object timerMouseCoord: TTimer
     Interval = 1
     OnTimer = timerMouseCoordTimer
-    Left = 64
+    Left = 400
+    Top = 184
   end
 end

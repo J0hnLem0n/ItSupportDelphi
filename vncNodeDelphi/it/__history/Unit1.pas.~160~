@@ -20,7 +20,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure screenImageMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -35,7 +34,6 @@ const
   mouseClickDown : string = '105,';
   mouseClickUpRbtn : String = '106,';
   mouseClickDownRbtn : string = '107,';
-  keyBoardPress : string = '108,';
 var
   Form1: TForm1;
 
@@ -54,12 +52,6 @@ begin
 end;
 
 
-
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-tcpClient.Socket.WriteLn(keyBoardPress+'1000000001,'+IntToStr(Key));
-end;
 
 procedure TForm1.screenImageClick(Sender: TObject);
 begin
