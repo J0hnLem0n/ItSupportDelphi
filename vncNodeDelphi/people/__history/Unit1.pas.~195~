@@ -92,8 +92,7 @@ coordMouse: string;
 //coord var
 ifCoord:string;
 i:integer;
-sLeftCoord, sRigthCoord, btnKey:string;
-
+sLeftCoord, sRigthCoord:string;
 begin
 //in mouse coord
 //tcpClient.Socket.WriteLn('getMouseCoords,'+userId);
@@ -165,16 +164,19 @@ if (commandServer='107') then begin
 end;
 if (commandServer='108') then begin
   i:=Length(fullReadString);
-  btnKey := copy(fullReadString, 4, i-3);
+  sLeftCoord := copy(fullReadString, 4, i-3);
   //keybd_event(Ord(StrToInt(sLeftCoord)), 0, KEYEVENTF_EXTENDEDKEY, 0);
   //keybd_event(ORD(StrToInt(sLeftCoord)), 0,KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
-  keybd_event(ORD(StrToInt(btnKey)), 0,KEYEVENTF_EXTENDEDKEY,0);
+  keybd_event(ORD(StrToInt(sLeftCoord)), 0,KEYEVENTF_EXTENDEDKEY,0);
   //ShowMessage(sLeftCoord);
 end;
-if (commandServer='109') then begin
+if (commandServer='108') then begin
   i:=Length(fullReadString);
-  btnKey := copy(fullReadString, 4, i-3);
-  keybd_event(ORD(StrToInt(btnKey)), 0, KEYEVENTF_KEYUP,0);
+  sLeftCoord := copy(fullReadString, 4, i-3);
+  //keybd_event(Ord(StrToInt(sLeftCoord)), 0, KEYEVENTF_EXTENDEDKEY, 0);
+  //keybd_event(ORD(StrToInt(sLeftCoord)), 0,KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
+  keybd_event(ORD(StrToInt(sLeftCoord)), 0,KEYEVENTF_KEYUP,0);
+  //ShowMessage(sLeftCoord);
 end;
 end;
 

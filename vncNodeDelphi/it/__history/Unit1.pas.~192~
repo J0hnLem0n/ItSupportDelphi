@@ -67,10 +67,11 @@ end;
 
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
+var
   btnShiftState:string;
 begin
   //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
-  tcpClient.Socket.WriteLn(keyBoardUp+'1000000001,'+IntToStr(Key));
+  tcpClient.Socket.WriteLn(keyBoardDown+'1000000001,'+IntToStr(Key));
 end;
 
 procedure TForm1.screenImageDblClick(Sender: TObject);

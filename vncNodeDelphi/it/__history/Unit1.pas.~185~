@@ -14,13 +14,13 @@ type
     sendDataTimer: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure sendDataTimerTimer(Sender: TObject);
+    procedure screenImageClick(Sender: TObject);
     procedure screenImageDblClick(Sender: TObject);
     procedure screenImageMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure screenImageMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -28,15 +28,14 @@ type
   end;
 
 const
-  hello : string = '101,'; //приветствие итешника
-  coordMouse : string = '102,'; //передача координат мышки
-  mouseClick : string = '103,'; //клик мыши двойной
-  mouseClickUp : string = '104,';
+  hello : String = '101,'; //приветствие итешника
+  coordMouse : String = '102,'; //передача координат мышки
+  mouseClick : String = '103,'; //клик мыши двойной
+  mouseClickUp : String = '104,';
   mouseClickDown : string = '105,';
-  mouseClickUpRbtn : string = '106,';
+  mouseClickUpRbtn : String = '106,';
   mouseClickDownRbtn : string = '107,';
   keyBoardDown : string = '108,';
-  keyBoardUp : string = '109,';
 var
   Form1: TForm1;
 
@@ -61,16 +60,13 @@ procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
 var
   btnShiftState:string;
 begin
-  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
-  tcpClient.Socket.WriteLn(keyBoardDown+'1000000001,'+IntToStr(Key));
+  if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
+  tcpClient.Socket.WriteLn(keyBoardDown+'1000000001,'+IntToStr(Key)+'_'+btnShiftState);
 end;
 
-procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-var
-  btnShiftState:string;
+procedure TForm1.screenImageClick(Sender: TObject);
 begin
-  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
-  tcpClient.Socket.WriteLn(keyBoardUp+'1000000001,'+IntToStr(Key));
+  //sendDataTimer.Enabled:=true;
 end;
 
 procedure TForm1.screenImageDblClick(Sender: TObject);

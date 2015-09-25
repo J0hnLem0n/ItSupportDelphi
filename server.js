@@ -19,7 +19,7 @@ var server = net.createServer(function(socket) {
 		dataClientNew = dataClientNew.substring(0, dataClient.length - 1);//********** del
 		var coordMouse = dataClientNew.substr(0,5);//************ del
 		var commandItString = dataClient.split(',');
-// вывод объекта в консоль console.log(JSON.stringify(data, null, 4));
+//вывод объекта в консоль console.log(JSON.stringify(data, null, 4));
 //jsonDate = JSON.stringify(data, null, 4);
 //console.log(jsonDate);
 		//-----------------------------------------------------------------
@@ -85,6 +85,13 @@ var server = net.createServer(function(socket) {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
 					clientPeopleSockets[i].write('108'+commandItString[2]+'\n');
+				} 
+			}
+		}
+		else if (commandItString[0] == '109') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('109'+commandItString[2]+'\n');
 				} 
 			}
 		}
