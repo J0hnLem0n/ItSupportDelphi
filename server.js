@@ -33,7 +33,7 @@ var server = net.createServer(function(socket) {
 		else if (commandItString[0] == '101') {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == commandItString[1]) {
-					clientPeopleSockets[i].remouteUserId = idClientPeople; //ид пользователя суппорт
+					clientPeopleSockets[i].remouteUserId = idClientPeople; //ид пользователя суппорт записывается в объект пользователя к которому подключаются
 					console.log('id: '+clientPeopleSockets[i].socketId+'--> '+' remouteUserId: '+clientPeopleSockets[i].remouteUserId);
 				} 
 			}
@@ -95,6 +95,13 @@ var server = net.createServer(function(socket) {
 				} 
 			}
 		}
+		/*else if (commandItString[0] == '110') {
+			for(i=0; i<clientPeopleSockets.length; i++) {
+				if (clientPeopleSockets[i].socketId == commandItString[1]) {
+					clientPeopleSockets[i].write('110'+commandItString[2]+'\n');
+				} 
+			}
+		}*/
 		else {
 			for(i=0; i<clientPeopleSockets.length; i++) {
 				if (clientPeopleSockets[i].socketId == '1000000002') {

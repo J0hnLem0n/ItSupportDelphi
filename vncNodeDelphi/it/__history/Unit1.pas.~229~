@@ -146,6 +146,8 @@ begin
       jpegImage.LoadFromStream(streamJpg);
       //jpegImage.SaveToFile('1a.jpeg');
       screenImage.Picture.Graphic:=jpegImage;
+      Form1.Width:=screenImage.Width;
+      Form1.Height:=screenImage.Height;
       jpegImage.Free;
       streamJpg.Clear;
       streamJpg.Free;

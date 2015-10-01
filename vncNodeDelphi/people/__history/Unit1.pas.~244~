@@ -36,7 +36,6 @@ procedure TmainForm.FormCreate(Sender: TObject);
 var testString:string;
     s:TStringStream;
 begin
-Application.ShowMainForm:=False;
   TCPClient.Connect();
   TCPClient.Socket.WriteLn(hello);
   userId:=TCPClient.Socket.ReadLn;
@@ -185,6 +184,7 @@ if (commandServer='109') then begin
   //keybd_event(kCode[1],kCode[2],KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
   sleep(50);
   keybd_event(kCode[1],kCode[2],KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
+  keybd_event(kCode[1],kCode[2],KEYEVENTF_KEYUP,0);
   //keybd_event(kCode[1],kCode[2],KEYEVENTF_KEYUP,0);
 end;
 if (commandServer='110') then begin

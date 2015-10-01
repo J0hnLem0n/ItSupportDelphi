@@ -1,6 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  AutoSize = True
   Caption = 'Form1'
   ClientHeight = 299
   ClientWidth = 635
@@ -22,6 +23,7 @@ object Form1: TForm1
     Width = 635
     Height = 299
     Align = alClient
+    AutoSize = True
     OnDblClick = screenImageDblClick
     OnMouseDown = screenImageMouseDown
     OnMouseUp = screenImageMouseUp

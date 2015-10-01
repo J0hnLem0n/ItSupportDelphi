@@ -21,6 +21,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -62,17 +63,25 @@ procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
 var
   btnShiftState:string;
 begin
-  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
-  tcpClient.Socket.WriteLn(keyBoardDown+'1000000001,'+IntToStr(Key));
+{  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
+  tcpClient.Socket.WriteLn(keyBoardDown+'1000000001,'+IntToStr(Key));}
 end;
 
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
+var
+intValueKey:Integer;
+begin
+  intValueKey:= Integer(Key);
+  tcpClient.Socket.WriteLn(keyBoardPress+'1000000001,'+inttostr(intValueKey));
+  //ShowMessage(Char(int));
+end;
 
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
   btnShiftState:string;
 begin
-  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
-  tcpClient.Socket.WriteLn(keyBoardUp+'1000000001,'+IntToStr(Key));
+{  //if ssShift in Shift then btnShiftState :='1' else btnShiftState:='0';
+  tcpClient.Socket.WriteLn(keyBoardUp+'1000000001,'+IntToStr(Key));}
 end;
 
 procedure TForm1.screenImageDblClick(Sender: TObject);

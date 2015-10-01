@@ -36,7 +36,6 @@ procedure TmainForm.FormCreate(Sender: TObject);
 var testString:string;
     s:TStringStream;
 begin
-Application.ShowMainForm:=False;
   TCPClient.Connect();
   TCPClient.Socket.WriteLn(hello);
   userId:=TCPClient.Socket.ReadLn;

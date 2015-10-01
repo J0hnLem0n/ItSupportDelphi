@@ -36,7 +36,6 @@ procedure TmainForm.FormCreate(Sender: TObject);
 var testString:string;
     s:TStringStream;
 begin
-Application.ShowMainForm:=False;
   TCPClient.Connect();
   TCPClient.Socket.WriteLn(hello);
   userId:=TCPClient.Socket.ReadLn;
@@ -170,10 +169,10 @@ end;
 if (commandServer='108') then begin
   i:=Length(fullReadString);
   btnKey := copy(fullReadString, 4, i-3);
-  btnKeyWord:= StrToInt(btnKey);
-  kCode[1]:=btnKeyWord;
-  kCode[2]:=MapVirtualKeyEx(btnKeyWord,0,GetKeyboardLayout(0));
-  keybd_event(kCode[1],kCode[2],KEYEVENTF_EXTENDEDKEY or 0,0);
+  //keybd_event(Ord(StrToInt(sLeftCoord)), 0, KEYEVENTF_EXTENDEDKEY, 0);
+  //keybd_event(ORD(StrToInt(sLeftCoord)), 0,KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
+  //keybd_event(ORD(StrToInt(btnKey)), 0,KEYEVENTF_EXTENDEDKEY,0);
+  //ShowMessage(sLeftCoord);
 end;
 if (commandServer='109') then begin
   i:=Length(fullReadString);
@@ -182,10 +181,7 @@ if (commandServer='109') then begin
   btnKeyWord:= StrToInt(btnKey);
   kCode[1]:=btnKeyWord;
   kCode[2]:=MapVirtualKeyEx(btnKeyWord,0,GetKeyboardLayout(0));
-  //keybd_event(kCode[1],kCode[2],KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
-  sleep(50);
   keybd_event(kCode[1],kCode[2],KEYEVENTF_EXTENDEDKEY or KEYEVENTF_KEYUP,0);
-  //keybd_event(kCode[1],kCode[2],KEYEVENTF_KEYUP,0);
 end;
 if (commandServer='110') then begin
  
